@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add News Article</title>
+</head>
+<body>
+    <h2>Add News Article</h2>
+
+    <form id="newsForm" enctype="multipart/form-data">
+        <label>Title:</label><br>
+        <input type="text" name="title"><br><br>
+
+        <label>Content:</label><br>
+        <textarea name="content"></textarea><br><br>
+
+        <label>Author:</label><br>
+        <input type="text" name="author"><br><br>
+
+        <label>Date:</label><br>
+        <input type="date" name="date"><br><br>
+
+        <label>Status:</label><br>
+        <select name="status">
+            <option>Published</option>
+            <option>Draft</option>
+        </select><br><br>
+
+        <label>Image:</label><br>
+        <input type="file" name="image"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>All News</h2>
+    <button onclick="loadNews()">Load News</button>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById("newsForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+
+            const response = await fetch("http://localhost:3000/api/news", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        async function loadNews() {
+            const res = await fetch("http://localhost:3000/api/news");
+            const data = await res.json();
+            document.getElementById("output").textContent = JSON.stringify(data, null, 4);
+        }
+    </script>
+</body>
+</html>
