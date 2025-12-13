@@ -10,20 +10,11 @@ app.use(express.json());
 app.use(express.static("uploads"));
 app.use(express.static("public"));
 require('dotenv').config();
+app.use(express.urlencoded({ extended: true }));
+const db = require("./db");
 
 
-// MySQL Connection
-const db = mysql.createConnection({
-   host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-});
-// Connect to MySQL
-db.connect(err => {
-    if (err) throw err;
-    console.log("MySQL Connected...");
-});
+
 
 // Image Upload Settings
 const storage = multer.diskStorage({
