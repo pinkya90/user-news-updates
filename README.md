@@ -59,8 +59,7 @@ Now you can open **mysqlworkbench** using your password and can execute the quer
 
 Create a `.env` file in the root directory:
 
-Created `.env.example` file for reference database details 
-
+Check  `.env.example` file for reference database details 
 ### Database Migation :
 
 The `migrate.js` file is used to create database tables.
