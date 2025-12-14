@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Enter Mobile Number</h2>
+    <input type="text" id="mobile" placeholder="Mobile Number">
+    <button onclick="sendOTP()">Send OTP</button>
+
+    <p id="result"></p>
+
+    <script>
+        function sendOTP() {
+            const mobile = document.getElementById("mobile").value;
+
+            fetch("http://localhost:5000/generate-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mobile })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = 
+                    "OTP Sent! (Testing OTP: " + data.otp + ")";
+            })
+            .catch(err => alert("Error"));
+        }
+    </script>
+</body>
+</html>

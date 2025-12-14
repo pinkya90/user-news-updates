@@ -11,7 +11,7 @@ const createUsersTable = `CREATE TABLE IF NOT EXISTS userdata (
 );
 `;
 
-// Run migration
+// Run migration to create userdata table
 
 db.query(createUsersTable, (err, result) => {
   if (err) {
@@ -21,6 +21,25 @@ db.query(createUsersTable, (err, result) => {
   console.log("Users table created successfully");
   process.exit();
 });
+
+
+// SQL query to add otp column to userdata table
+
+const addOtpColumn = `ALTER TABLE userdata 
+ADD COLUMN otp VARCHAR(10);`;
+
+// Run migration to add otp column
+
+db.query(addOtpColumn, (err) => {
+  if (err) {
+    console.error("Error adding OTP column:", err);
+    return;
+  }
+  console.log("OTP column added successfully");
+  process.exit();
+});
+
+
 
 
 // SQL query to create news table

@@ -59,13 +59,7 @@ Now you can open **mysqlworkbench** using your password and can execute the quer
 
 Create a `.env` file in the root directory:
 
-**DB_HOST=localhost**
-
-**DB_USER=root**
-
-**DB_PASS=yourpassword**
-
-**DB_NAME=test_db**
+Created `.env.example` file for reference database details 
 
 ### Database Migation :
 
