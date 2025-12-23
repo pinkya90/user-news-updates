@@ -27,21 +27,6 @@ function validateUser({ name, email, password, mobile }) {
 
     return null;
 }
-/*
-// -------------------- HTML FORM POST --------------------
-app.post('/register', (req, res) => {
-    const { name, email, password, mobile } = req.body;
-
-    // Validation
-    const validationError = validateUser({ name, email, password, mobile });
-    if (validationError) return res.send("Error: " + validationError);
-
-    const sql = "INSERT INTO userdata(name, email, password, mobile) VALUES (?, ?, ?, ?)";
-    db.query(sql, [name, email, password, mobile], (err, result) => {
-        if (err) throw err;
-        res.send("User Registered Successfully!");
-    });
-});*/
 
 // -------------------- JSON API VERSION --------------------
 app.post('/api/register', (req, res) => {
